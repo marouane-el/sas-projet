@@ -38,6 +38,21 @@ void ajouter (){
     nbretu++;
                }
 
+void supprimer(){
+for(i=0;i<nbretu;i++){
+        if(etu[i].numero_unique==numsupp){
+            etu[i].numero_unique=etu[i+1].numero_unique;
+            strcpy(etu[i].nom,etu[i+1].nom);
+            strcpy(etu[i].prenom,etu[i+1].prenom);
+            etu[i].date_naissance.jour,etu[i].date_naissance.mois,etu[i].date_naissance.annee=etu[i+1].date_naissance.jour,etu[i+1].date_naissance.mois,etu[i+1].date_naissance.annee;
+            strcpy(etu[i].departement,etu[i+1].departement);
+            etu[i].note_generale=etu[i+1].note_generale;
+                                         }
+         printf("le numero et supprimer\n");
+         nbretu--;
+                }
+                 }
+                 
 void afficher (){
     if (nbretu==0){
     printf("il n ya pas d etudiant\n");
@@ -56,6 +71,37 @@ void afficher (){
         }
 }
 
+void modifier(){
+    int numero;
+    int Trouver = 0;
+    printf("Entrer le numero unique de l etudiant a modifier: ");
+    scanf("%d", &numero);
+
+    for (i = 0; i < nbretu; i++) {
+        if (etu[i].numero_unique == numero) {
+            Trouver = 1;
+            printf("Modifier le nom (actuel: %s): ", etu[i].nom);
+            scanf("%s", etu[i].nom);
+            printf("Modifier le prenom (actuel: %s): ", etu[i].prenom);
+            scanf("%s", etu[i].prenom);
+            printf("Modifier la date de naissance (actuel: %d/%d/%d):\n", etu[i].date_naissance.jour, etu[i].date_naissance.mois, etu[i].date_naissance.annee);
+            printf("Jour: ");
+            scanf("%d", &etu[i].date_naissance.jour);
+            printf("Mois: ");
+            scanf("%d", &etu[i].date_naissance.mois);
+            printf("Annee: ");
+            scanf("%d", &etu[i].date_naissance.annee);
+            printf("Modifier le departement (actuel: %s): ", etu[i].departement);
+            scanf("%s", etu[i].departement);
+            printf("Modifier la note generale (actuel: %f): ", etu[i].note_generale);
+            scanf("%f", &etu[i].note_generale);
+            printf("Les informations ont ete modifiees.\n");
+            break;
+    }else{
+                printf("Aucun etudiant trouve avec le numero %d.\n",&numero);
+           }
+    }
+    }
 
 
 int main() {
@@ -73,24 +119,34 @@ while(1){
     printf("taper votre choix: \n");
     scanf("%d",&choix);
     switch(choix){
-                   case 1 :
-                          ajouter();
+                    case 1 :
+                            ajouter();
                           break;
 
-                   case 2 :
+                    case 2 :
+                            supprimer();
                            break;
 
-                   case 3 :afficher();
-                       break;
+                    case 3 :
+                            afficher();
+                           break;
 
                     case 4 :
-                       break;
+                            modifier();
+                           break;
 
-                    case 5 :
-                       break;
+                    case 5 : 
+                            do{
+                            printf("afficher le nombre total d etudiants inscrits")
+                             printf("afficher le nombre d etudiants dans chaque departement")
+                             printf("afficher les etudiants ayant une moyenne generale superieure a un certain seuil")
+                             printf("afficher les 3 etudiants ayant les meilleures notes")
+                             printf("afficher le nombre d etudiants ayant reussi dans chaque departement note superrieur ou  egal 10/20")
+                            } while (choix2<6);
+                           break;
 
-                       case 6 : return 0;
-                       break;
+                    case 6 : return 0;
+                           break;
 
             }
 
